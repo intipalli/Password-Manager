@@ -1,0 +1,41 @@
+<app-navbar></app-navbar>
+<br><br>
+<app-add-website></app-add-website>
+<div class="bg-white-100 p-8">
+  <div class="max-w-6xl mx-auto">
+    <div class="bg-white p-4 rounded-lg shadow-md">
+      <h5 class="text-xl font-medium text-gray-900">Websites</h5><br>
+      <div *ngIf="isDeleted" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+        {{websiteName}} deleted.
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+        <div *ngFor="let site of allSites | async" class="max-w-xs">
+          <div class="bg-white border border-gray-200 rounded-lg shadow">
+            <a href="{{site.websiteUrl}}">
+              <div class="flex justify-center mt-4">
+                <img class="rounded-md" [src]="site.imageUrl" alt="" />
+              </div>
+            </a>
+            <div class="p-4">
+              <a href="{{site.websiteUrl}}">
+                <h5 class="mb-2 text-lg font-bold tracking-tight text-gray-900">{{site.websiteName}}
+                </h5>
+              </a>
+              <p class="mb-2 text-gray-700">{{site.websiteUrl}}</p>
+              <div class="flex justify-between">
+                <button routerLink="/passwords" [queryParams]="{id: site.id, websiteName: site.websiteName, websiteUrl:site.websiteUrl, imageUrl: site.imageUrl}"
+                  class="px-2 py-1 text-sm font-small text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">Add
+                  New Password</button>
+                <button clicktype="button" (click)="editSite(site.websiteName, site.websiteUrl, site.imageUrl, site.id)"
+                  class="px-2 py-1 text-sm font-small text-white bg-yellow-500 rounded-lg hover:bg-yellow-600 focus:ring-4 focus:outline-none focus:ring-yellow-300">Edit</button>
+                <button (click)="deleteSite(site.id, site.websiteName)"
+                  class="px-2 py-1 text-sm font-small text-white bg-red-700 rounded-lg hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

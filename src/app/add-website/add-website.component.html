@@ -1,0 +1,25 @@
+<div class="w-full max-w-sm mx-auto p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 mt-16">
+    <div *ngIf="isSuccess" class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50" role="alert">
+        {{successMessage}}
+    </div>
+    
+    <form #f="ngForm" class="space-y-6" (ngSubmit)="onSubmit(f.value)">
+        <h5 class="text-xl font-medium text-gray-900 text-center">{{formState}} Website</h5>
+        <div>
+            <label for="websiteName" class="block mb-2 text-sm font-medium text-gray-900">Website Name</label>
+            <input [(ngModel)]="websiteName" type="text" id="websiteName" name="websiteName" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Website Name" required />
+        </div>
+        <div>
+            <label for="websiteUrl" class="block mb-2 text-sm font-medium text-gray-900">Website URL</label>
+            <input [(ngModel)]="websiteUrl" type="text" id="websiteUrl" name="websiteUrl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Website URL" required />
+        </div>
+        <div>
+            <label for="imageUrl" class="block mb-2 text-sm font-medium text-gray-900">Image URL</label>
+            <input [(ngModel)]="imageUrl" type="text" id="imageUrl" name="imageUrl" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Image URL" required />
+        </div>
+        <div class="flex justify-between">
+            <button type="submit" class="w-1/2 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{{formState}} Website</button>&nbsp;
+            <!-- <button type="button" class="w-1/2 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Cancel</button> -->
+        </div>
+    </form>
+</div>
